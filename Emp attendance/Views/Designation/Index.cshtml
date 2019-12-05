@@ -1,0 +1,68 @@
+﻿@model IEnumerable<EmpAttendance.ViewModel.DesignationViewModel>
+
+@{
+    ViewBag.Title = "Designation ";
+}
+<link href="~/Content/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<div class="container">
+    <div class="col-12" style="margin-top:120px;">
+        <div class="box_layout">
+            <div class="heading">
+                <ul class="buttons">
+                    <li><button class="btn_addnew btn btn-primary create" data-href="/Designation/CreateDesignation" title="Add New"><i class="fa fa-plus">Add New</i></button></li>
+                </ul>
+            </div>
+
+            <div class="content border-bottom">
+                Following are the list of designations.
+            </div>
+            <div class="table-responsive">
+                <table id="designationGrid">
+                    <thead>
+                        <tr>
+                            <th>S.N</th>
+                            <th>Designation </th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                         {
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @item.DesignationName
+                                </td>
+                                <td>
+                                    <div class="" data-id=@item.Id>
+                                        <button class="btn_edit btn btn-sm">
+                                            Edit
+                                        </button>
+                                        <button class="btn_delete btn btn-danger">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                         }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+    <script src="~/Scripts/webapp/Designation/designation.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#designationGrid').DataTable();
+        });
+    </script>
+}

@@ -1,0 +1,5 @@
+﻿@model EmpAttendance.ViewModel.DesignationViewModel
+@using (Html.BeginForm("CreateDesignation", "Designation", FormMethod.Post, new { id = "CreateDesignationForm" }))
+ {
+    @Html.Partial("_Form", Model);
+ }

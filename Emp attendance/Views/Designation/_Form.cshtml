@@ -1,0 +1,18 @@
+﻿@model EmpAttendance.ViewModel.DesignationViewModel
+<div class="container">
+    <div class="form-group">
+
+        <div class="box-group">
+            <div class="row">
+                <div class="col-6">
+                    <label>Designation Name</label>
+                    @Html.HiddenFor(x => x.Id);
+                    @Html.TextBoxFor(x => x.DesignationName, new { @class = "form-control", @placeholder = "Designation Name" })
+                    @Html.ValidationMessageFor(model => model.DesignationName, "", new { @class = "text-danger" })
+                </div>
+             
+            </div>
+        </div>
+    </div>
+</div>
+

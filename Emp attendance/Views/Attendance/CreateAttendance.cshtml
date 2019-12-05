@@ -1,0 +1,5 @@
+﻿@model EmpAttendance.ViewModel.AttendanceViewModel
+@using (Html.BeginForm("CreateAttendance", "Attendance", FormMethod.Post, new { id = "CreateAttendanceForm" }))
+{
+    @Html.Partial("_Form", Model);
+}

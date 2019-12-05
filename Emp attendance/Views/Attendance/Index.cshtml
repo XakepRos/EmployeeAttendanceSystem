@@ -1,0 +1,99 @@
+﻿@model IEnumerable<EmpAttendance.ViewModel.AttendanceViewModel>
+
+@{
+    ViewBag.Title = "Attendance ";
+}
+<link href="~/Content/dataTables.bootstrap.min.css" rel="stylesheet" />
+<div class="container">
+    <div class="col-12" style="margin-top:120px;">
+        <div class="box_layout">
+            <div class="heading">
+                <ul class="buttons">
+                    <li><button class="btn_addnew btn btn-primary create" data-href="/Attendance/CreateAttendance" title="Add New"><i class="fa fa-plus">Add New</i></button></li>
+                </ul>
+            </div>
+
+            <div class="content border-bottom">
+                Following are the list of Attendance.
+            </div>
+            <div class="table-responsive">
+                <table id="attendanceGrid" class="table table-striped table-bordered" style="width:100%">
+                    <thead>
+                        <tr>
+                            <th>S.N</th>
+                            <th>Employee </th>
+                            <th>InTIme </th>
+                            <th>OutTime </th>
+                            <th>Date </th>
+
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>
+                                    @item.Id
+                                </td>
+                                <td>
+                                    @item.Employee
+                                </td>
+                                <td>
+                                    @item.InTime
+                                </td>
+                                <td>
+                                    @item.OutTime
+                                </td>
+                                <td>
+                                    @item.CreatedDate
+                                </td>
+                                <td>
+                                    <div class="" data-id=@item.Id>
+                                        <button class="btn_edit btn btn-sm">
+                                            Edit
+                                        </button>
+                                        <button class="btn_delete btn btn-danger">
+                                            Delete
+                                        </button>
+                                    </div>
+                                </td>
+                            </tr>
+                        }
+
+
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+@section scripts{
+    <script src="~/Scripts/webapp/Attendance/attendance.js"></script>
+    <script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+
+
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/dataTables.buttons.min.js"></script>
+    <script src=" https://cdn.datatables.net/buttons/1.6.1/js/buttons.flash.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.1.3/jszip.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/pdfmake.min.js"></script>
+    <script src=" https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.1.53/vfs_fonts.js"></script>
+    <script src=" https://cdn.datatables.net/buttons/1.6.1/js/buttons.html5.min.js"></script>
+    <script src="https://cdn.datatables.net/buttons/1.6.1/js/buttons.print.min.js"></script>
+
+
+   
+   
+   
+    
+    <script>
+        $(document).ready(function () {
+            $('#attendanceGrid').DataTable({
+                dom: 'Bfrtip',
+                buttons: [
+                     'csv', 'excel', 'pdf', 'print'
+                ]
+            });
+        });
+    </script>
+}
